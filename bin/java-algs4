@@ -8,7 +8,7 @@
 # *************************************************
 
 # This must match the install directory
-INSTALL=~/algs4
+INSTALL=~/Programming/Java/algorithms_p1
 
 # Sets the path to the classpath libraries
 jars=(.:${INSTALL}/algs4.jar)
