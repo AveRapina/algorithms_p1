@@ -145,4 +145,4 @@ public class Percolation
             throw new IndexOutOfBoundsException("Column index j is out of range.");
         }
     }
- }
+} 
