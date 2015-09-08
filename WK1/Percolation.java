@@ -7,6 +7,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation
 {
     private WeightedQuickUnionUF sites;
+    private WeightedQuickUnionUF backwashSites;
     private boolean[] siteStates;
 
     private int N;
@@ -31,6 +32,9 @@ public class Percolation
         //Add two virtual sites used to determine if the system percolates.
         sites = new WeightedQuickUnionUF(numSites + 2);
         siteStates = new boolean[numSites];
+
+        //doesn't have virtual bottom site 
+        backwashSites = new WeightedQuickUnionUF(numSites + 1);
     }
 
     //Open a site. If open already, np.
@@ -50,11 +54,15 @@ public class Percolation
         if (i == 1)
         {
             sites.union(siteIndex, virtualTopSiteIndex);
+            
+            backwashSites.union(siteIndex, virtualTopSiteIndex);
         }
         else if (isOpen(i - 1, j))
         {
             int adjacentTopSiteIndex = convert2Dto1D(i - 1, j);
             sites.union(siteIndex, adjacentTopSiteIndex);
+            
+            backwashSites.union(siteIndex, adjacentTopSiteIndex);
         }
 
         //Connect the current site to the adjacent left site.
@@ -63,6 +71,8 @@ public class Percolation
         { 
             int adjacentLeftSiteIndex = convert2Dto1D(i, j - 1);
             sites.union(siteIndex, adjacentLeftSiteIndex);
+            
+            backwashSites.union(siteIndex, adjacentLeftSiteIndex);
         }
 
         //Connect the current site to the adjacent right site.
@@ -71,6 +81,8 @@ public class Percolation
         {
             int adjacentRightSiteIndex = convert2Dto1D(i, j + 1);
             sites.union(siteIndex, adjacentRightSiteIndex);
+            
+            backwashSites.union(siteIndex, adjacentRightSiteIndex);
         }
 
         //Connect to the adjacent site on bottom of the current site.
@@ -83,6 +95,8 @@ public class Percolation
         {
             int adjacentBottomSiteIndex = convert2Dto1D(i + 1, j);
             sites.union(siteIndex, adjacentBottomSiteIndex);
+            
+            backwashSites.union(siteIndex, adjacentBottomSiteIndex);
         }
     }
 
@@ -108,7 +122,8 @@ public class Percolation
         
         int siteIndex = convert2Dto1D(i, j);
 
-        return sites.connected(siteIndex, virtualTopSiteIndex);
+        //return sites.connected(siteIndex, virtualTopSiteIndex);
+        return backwashSites.connected(siteIndex, virtualTopSiteIndex);
     }
 
     /**
