@@ -42,7 +42,7 @@ public class Percolation
         }
 
         //Open the current site.
-        int siteIndex = 2Dto1D(i, j);
+        int siteIndex = convert2Dto1D(i, j);
         siteStates[siteIndex] = true;
 
         //Connect the current site to the adjacent top site.
@@ -53,7 +53,7 @@ public class Percolation
         }
         else if (isOpen(i - 1, j))
         {
-            int adjacentTopSiteIndex = 2Dto1D(i - 1, j);
+            int adjacentTopSiteIndex = convert2Dto1D(i - 1, j);
             sites.union(siteIndex, adjacentTopSiteIndex);
         }
 
@@ -61,7 +61,7 @@ public class Percolation
         //If the current site is on the leftmost column, do nothing.
         if ((j != 1) && isOpen(i, j - 1))
         { 
-            int adjacentLeftSiteIndex = 2Dto1D(i, j - 1);
+            int adjacentLeftSiteIndex = convert2Dto1D(i, j - 1);
             sites.union(siteIndex, adjacentLeftSiteIndex);
         }
 
@@ -69,7 +69,7 @@ public class Percolation
         //If the current site is on the rightmost column, do nothing. 
         if ((j != N) && isOpen(i, j + 1))
         {
-            int adjacentRightSiteIndex = 2Dto1D(i, j + 1);
+            int adjacentRightSiteIndex = convert2Dto1D(i, j + 1);
             sites.union(siteIndex, adjacentRightSiteIndex);
         }
 
@@ -81,7 +81,7 @@ public class Percolation
         }
         else if (isOpen(i + 1, j))
         {
-            int adjacentBottomSiteIndex = 2Dto1D(i + 1, j);
+            int adjacentBottomSiteIndex = convert2Dto1D(i + 1, j);
             sites.union(siteIndex, adjacentBottomSiteIndex);
         }
     }
@@ -91,7 +91,7 @@ public class Percolation
      */
     public boolean isOpen(int i, int j)
     {
-        int siteIndex = 2Dto1D(i, j);
+        int siteIndex = convert2Dto1D(i, j);
         return siteStates[siteIndex];
     }
 
@@ -106,7 +106,7 @@ public class Percolation
             return false;
         }
         
-        int siteIndex = 2Dto1D(i, j);
+        int siteIndex = convert2Dto1D(i, j);
 
         return sites.connected(siteIndex, virtualTopSiteIndex);
     }
@@ -124,9 +124,9 @@ public class Percolation
     /**
      * Converts 2D coordinates, i and j, to a one dimensional index.
      */
-    private int 2Dto1D(int i, int j)
+    private int convert2Dto1D(int i, int j)
     {
-        validate2D(i, j)
+        validate2D(i, j);
         return (i - 1) * N + (j - 1);
     }
 
