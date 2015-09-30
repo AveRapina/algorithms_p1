@@ -157,9 +157,9 @@ public class Deque<Item> implements Iterable<Item>
     
     private class LinkedListNode<Item>
     {
-        Item payload;
-        LinkedListNode next;
-        LinkedListNode prev;
+        private Item payload;
+        private LinkedListNode next;
+        private LinkedListNode prev;
 
         public LinkedListNode(Item payload)
         {
