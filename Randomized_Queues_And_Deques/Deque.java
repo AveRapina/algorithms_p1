@@ -90,6 +90,12 @@ public class Deque<Item> implements Iterable<Item>
         {
             head.prev = null;
         }
+        
+        //Update tail to null if the last element is being removed. 
+        if (size == 1)
+        {
+            tail = null;
+        }
 
         size--;
         return (Item) payload; 
@@ -113,6 +119,12 @@ public class Deque<Item> implements Iterable<Item>
             tail.next = null;
         }
 
+        //Update head to null if the last element is being removed. 
+        if (size == 1)
+        {
+            head = null;
+        }
+
         size--;
         return (Item) payload;
     }
@@ -125,34 +137,12 @@ public class Deque<Item> implements Iterable<Item>
     public static void main(String[] args)
     {
         Deque<Integer> d = new Deque<Integer>();
-        d.addFirst(1);
+
         d.addFirst(2);
-        d.addFirst(3);
+        System.out.println(d.removeLast());
+
         d.addFirst(4);
-
-        /*
-        while (!d.isEmpty())
-        {
-            System.out.println(d.removeFirst());
-        }
-        */
-
-
-        /*
-        for (int i = 0; i < 4; i++)
-        {
-            System.out.printf("Current Size: %d\n", d.size());
-            int x = d.removeLast();
-            System.out.println(x);
-        }
-        */
-
-        Iterator<Integer> i = d.iterator();
-
-        while (i.hasNext())
-        {
-            System.out.println(i.next());
-        }
+        System.out.println(d.removeLast());
     }
     
     private class LinkedListNode<Item>
