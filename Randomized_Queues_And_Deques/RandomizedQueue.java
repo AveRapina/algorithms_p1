@@ -138,7 +138,7 @@ public class RandomizedQueue<Item> implements Iterable<Item>
 
     public static void main(String[] args)
     {
-        RandomizedQueue<Integer> r= new RandomizedQueue<Integer>();
+        RandomizedQueue<Integer> r = new RandomizedQueue<Integer>();
         r.enqueue(1);
         r.enqueue(2);
         r.enqueue(3);
@@ -191,7 +191,7 @@ public class RandomizedQueue<Item> implements Iterable<Item>
 
     private class RandomizedQueueIterator implements Iterator<Item>
     {
-        RandomizedQueue<Item> data;
+        private RandomizedQueue<Item> data;
 
         public RandomizedQueueIterator(RandomizedQueue<Item> rq)
         {

@@ -190,6 +190,11 @@ public class Deque<Item> implements Iterable<Item>
 
         public Item next()
         {
+            if (!hasNext())
+            {
+                throw new java.util.NoSuchElementException();
+            }
+
             Item payload = (Item) current.payload;
             current = current.next;
             return payload;

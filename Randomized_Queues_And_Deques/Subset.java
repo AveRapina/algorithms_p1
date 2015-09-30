@@ -9,7 +9,7 @@ public class Subset
         RandomizedQueue<String> rq = new RandomizedQueue<String>();
 
         //Populate the randomized queue
-        while(!StdIn.isEmpty())
+        while (!StdIn.isEmpty())
         {
             rq.enqueue(StdIn.readString());
         }
