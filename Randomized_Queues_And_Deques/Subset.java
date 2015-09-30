@@ -1,4 +1,4 @@
-
+import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdIn;
 
 public class Subset
@@ -7,13 +7,20 @@ public class Subset
     {
         int numOutputs = Integer.parseInt(args[0]);
         RandomizedQueue<String> rq = new RandomizedQueue<String>();
+    
+        String[] tokens = StdIn.readAllStrings();
 
-        //Populate the randomized queue
-        while (!StdIn.isEmpty())
+        int numTokens = tokens.length;
+        for (int i = 0; i < numOutputs; i++)
         {
-            rq.enqueue(StdIn.readString());
-        }
+            int r = StdRandom.uniform(numTokens);
 
+            rq.enqueue(tokens[r]);
+            tokens[r] = tokens[numTokens - 1];
+            tokens[numTokens - 1] = null;
+            numTokens--;
+        }
+        
         for (int i = 0; i < numOutputs; i++)
         {
             System.out.println(rq.dequeue());
