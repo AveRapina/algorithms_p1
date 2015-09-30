@@ -86,15 +86,11 @@ public class RandomizedQueue<Item> implements Iterable<Item>
         //I might need to do a deep copy here...not sure yet.
         Item out = data[r];
 
-        //If the item to be removed isn't the rightmost item in the array...
-        if (r != size - 1)
-        {
-            //Copy the rightmost item to index R. 
-            data[r] = data[size - 1];
+        //Copy the rightmost item to index R.
+        data[r] = data[size - 1];
 
-            //Set the rightmost item to null to prevent loitering.
-            data[size - 1] = null;
-        }
+        //Set the rightmost item to null to prevent loitering.
+        data[size - 1] = null;
         
         size--;
 
