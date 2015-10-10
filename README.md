@@ -1,4 +1,4 @@
-Programming assignments for Coursera MOOC, Algorithms (Part 1) by Princeton University
+Programming assignments in Java for Coursera MOOC, Algorithms (Part 1) by Princeton University
 
 .jar files and tools in bin are provided by Princeton University. 
 Instructions for retrieving the latest version of those tools are located at:
